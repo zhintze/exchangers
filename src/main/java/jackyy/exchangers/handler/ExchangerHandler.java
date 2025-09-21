@@ -444,7 +444,7 @@ public class ExchangerHandler {
         ensureTagsExist(stack);
         chance = Math.max(0, Math.min(100, chance)); // Clamp between 0-100
         NBTHelper.setInt(stack, "fuzzyPlacementChance", chance);
-        player.sendSystemMessage(Component.literal("Fuzzy Placement Chance: " + chance + "%"));
+        // No message - silent update for GUI responsiveness
     }
 
     public static int getFuzzyPlacementChance(ItemStack stack) {

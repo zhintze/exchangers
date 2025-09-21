@@ -52,6 +52,7 @@ public class ExchangersGuiScreen extends Screen {
     private ToggleButton selectiveReplacementButton;
 
     private EditBox fuzzyPlacementChanceField;
+    private String previousChance = "";
 
     public ExchangersGuiScreen() {
         super(Component.translatable("screen.exchangers.exchanger_gui.title"));
@@ -97,8 +98,22 @@ public class ExchangersGuiScreen extends Screen {
         fuzzyPlacementChanceField.setFocused(false);
         fuzzyPlacementChanceField.setCanLoseFocus(true);
         this.addRenderableWidget(fuzzyPlacementChanceField);
+        previousChance = chance;
     }
 
+    @Override
+    public void tick() {
+        super.tick();
+        if (fuzzyPlacementChanceField != null) {
+            String currentValue = fuzzyPlacementChanceField.getValue();
+            if (!currentValue.equals(previousChance)) {
+                if (!currentValue.isEmpty()) {
+                    parseFuzzyPlacementChance(fuzzyPlacementChanceField, 1, 100);
+                }
+                previousChance = currentValue;
+            }
+        }
+    }
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {

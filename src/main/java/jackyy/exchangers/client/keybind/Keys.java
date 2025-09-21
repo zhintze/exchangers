@@ -35,7 +35,7 @@ public class Keys {
         "key.exchangers.toggle_fuzzy_placement",
         ExchangersKeyConflictContext.EXCHANGER_CONFLICT_CONTEXT,
         InputConstants.Type.KEYSYM,
-        InputConstants.KEY_F,
+        InputConstants.UNKNOWN.getValue(),
         CATEGORY
     );
 
@@ -43,7 +43,7 @@ public class Keys {
         "key.exchangers.toggle_directional_placement",
         ExchangersKeyConflictContext.EXCHANGER_CONFLICT_CONTEXT,
         InputConstants.Type.KEYSYM,
-        InputConstants.KEY_D,
+        InputConstants.UNKNOWN.getValue(),
         CATEGORY
     );
 
@@ -51,7 +51,7 @@ public class Keys {
         "key.exchangers.toggle_void_items",
         ExchangersKeyConflictContext.EXCHANGER_CONFLICT_CONTEXT,
         InputConstants.Type.KEYSYM,
-        InputConstants.KEY_V,
+        InputConstants.UNKNOWN.getValue(),
         CATEGORY
     );
 
@@ -59,7 +59,7 @@ public class Keys {
         "key.exchangers.toggle_force_drop",
         ExchangersKeyConflictContext.EXCHANGER_CONFLICT_CONTEXT,
         InputConstants.Type.KEYSYM,
-        InputConstants.KEY_G,
+        InputConstants.UNKNOWN.getValue(),
         CATEGORY
     );
 
@@ -67,7 +67,7 @@ public class Keys {
         "key.exchangers.toggle_selective_replacement",
         ExchangersKeyConflictContext.EXCHANGER_CONFLICT_CONTEXT,
         InputConstants.Type.KEYSYM,
-        InputConstants.KEY_R,
+        InputConstants.UNKNOWN.getValue(),
         CATEGORY
     );
 
