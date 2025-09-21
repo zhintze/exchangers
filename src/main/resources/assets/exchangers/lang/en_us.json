@@ -42,6 +42,7 @@
   "key.exchangers.toggle_directional_placement": "Toggle Directional Placement",
   "key.exchangers.toggle_void_items": "Toggle Void Items",
   "key.exchangers.toggle_force_drop": "Toggle Force Drop",
+  "key.exchangers.toggle_selective_replacement": "Toggle Selective Replacement",
   "key.exchangers.open_gui": "Open Exchanger GUI",
 
   "screen.exchangers.exchanger_gui.title": "Exchanger Configuration",
@@ -58,6 +59,8 @@
   "exchangers.tooltip.fuzzy_placement_button_desc": "Randomly place blocks with a chance",
   "exchangers.tooltip.void_items_button_name": "Void Items",
   "exchangers.tooltip.void_items_button_desc": "Void exchanged items instead of dropping them",
+  "exchangers.tooltip.selective_replacement_button_name": "Selective Replacement",
+  "exchangers.tooltip.selective_replacement_button_desc": "Only replace blocks matching the targeted type",
   "exchangers.tooltip.fuzzy_placement_chance_box_name": "Fuzzy Placement Chance",
   "exchangers.tooltip.fuzzy_placement_chance_box_desc": "Set the percentage chance for fuzzy placement",
   "exchangers.tooltip.state": "State: %s"

@@ -49,6 +49,7 @@ public class ExchangersGuiScreen extends Screen {
     private ToggleButton directionalPlacementButton;
     private ToggleButton fuzzyPlacementButton;
     private ToggleButton voidItemsButton;
+    private ToggleButton selectiveReplacementButton;
 
     private EditBox fuzzyPlacementChanceField;
 
@@ -79,6 +80,8 @@ public class ExchangersGuiScreen extends Screen {
                 button -> NetworkHandler.sendToServer(new PacketToggleFuzzyPlacement()), narration -> Component.literal("Fuzzy Placement"));
         voidItemsButton = new ToggleButton(relativeX + 140, relativeY + 66, 20, 20, Component.literal("\u2A37"),
                 button -> NetworkHandler.sendToServer(new PacketToggleVoidItems()), narration -> Component.literal("Void Items"));
+        selectiveReplacementButton = new ToggleButton(relativeX + 20, relativeY + 106, 20, 20, Component.literal("\u2699"),
+                button -> NetworkHandler.sendToServer(new PacketToggleSelectiveReplacement()), narration -> Component.literal("Selective Replacement"));
         this.addRenderableWidget(decreaseRangeButton);
         this.addRenderableWidget(increaseRangeButton);
         this.addRenderableWidget(modeSwitchButton);
@@ -86,6 +89,7 @@ public class ExchangersGuiScreen extends Screen {
         this.addRenderableWidget(directionalPlacementButton);
         this.addRenderableWidget(fuzzyPlacementButton);
         this.addRenderableWidget(voidItemsButton);
+        this.addRenderableWidget(selectiveReplacementButton);
         fuzzyPlacementChanceField = new EditBox(this.font, relativeX + 92, relativeY + 108, 26, 16, Component.empty());
         fuzzyPlacementChanceField.setMaxLength(3);
         fuzzyPlacementChanceField.setValue(chance);
@@ -115,6 +119,7 @@ public class ExchangersGuiScreen extends Screen {
         directionalPlacementButton.setButtonToggled(ExchangerHandler.getDirectionalPlacement(stack));
         fuzzyPlacementButton.setButtonToggled(ExchangerHandler.getFuzzyPlacement(stack));
         voidItemsButton.setButtonToggled(ExchangerHandler.getVoidItems(stack));
+        selectiveReplacementButton.setButtonToggled(ExchangerHandler.getSelectiveReplacement(stack));
 
         // Get fresh tag for tooltips
         CompoundTag tag = NBTHelper.getTag(stack);
@@ -158,6 +163,11 @@ public class ExchangersGuiScreen extends Screen {
             drawToolTip(guiGraphics, ImmutableList.of(StringHelper.localize(Reference.MODID, "tooltip.void_items_button_name"),
                     StringHelper.localize(Reference.MODID, "tooltip.void_items_button_desc"),
                     StringHelper.localize(Reference.MODID, "tooltip.state", Reference.getStateString(tag.getBoolean("voidItems")))), mouseX, mouseY);
+        }
+        if (selectiveReplacementButton.isHovered()) {
+            drawToolTip(guiGraphics, ImmutableList.of(StringHelper.localize(Reference.MODID, "tooltip.selective_replacement_button_name"),
+                    StringHelper.localize(Reference.MODID, "tooltip.selective_replacement_button_desc"),
+                    StringHelper.localize(Reference.MODID, "tooltip.state", Reference.getStateString(tag.getBoolean("selectiveReplacement")))), mouseX, mouseY);
         }
         if (fuzzyPlacementChanceField.isMouseOver(mouseX, mouseY)) {
             drawToolTip(guiGraphics, ImmutableList.of(StringHelper.localize(Reference.MODID, "tooltip.fuzzy_placement_chance_box_name"),

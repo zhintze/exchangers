@@ -21,6 +21,7 @@ public class NetworkHandler {
         registrar.playToServer(PacketSetFuzzyPlacementChance.TYPE, PacketSetFuzzyPlacementChance.STREAM_CODEC, (packet, context) -> packet.handle(context));
         registrar.playToServer(PacketToggleVoidItems.TYPE, PacketToggleVoidItems.STREAM_CODEC, (packet, context) -> packet.handle(context));
         registrar.playToServer(PacketToggleForceDropItems.TYPE, PacketToggleForceDropItems.STREAM_CODEC, (packet, context) -> packet.handle(context));
+        registrar.playToServer(PacketToggleSelectiveReplacement.TYPE, PacketToggleSelectiveReplacement.STREAM_CODEC, (packet, context) -> packet.handle(context));
     }
 
     public static void sendToClient(CustomPacketPayload packet, ServerPlayer player) {

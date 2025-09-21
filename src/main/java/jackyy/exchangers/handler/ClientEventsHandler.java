@@ -18,6 +18,7 @@ public class ClientEventsHandler {
         event.register(Keys.TOGGLE_DIRECTIONAL_PLACEMENT);
         event.register(Keys.TOGGLE_VOID_ITEMS);
         event.register(Keys.TOGGLE_FORCE_DROP);
+        event.register(Keys.TOGGLE_SELECTIVE_REPLACEMENT);
         event.register(Keys.OPEN_GUI);
     }
 

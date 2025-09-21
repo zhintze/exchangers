@@ -55,6 +55,9 @@ public class ExchangerHandler {
         if (!NBTHelper.hasBoolean(stack, "voidItems")) {
             NBTHelper.setBoolean(stack, "voidItems", false);
         }
+        if (!NBTHelper.hasBoolean(stack, "selectiveReplacement")) {
+            NBTHelper.setBoolean(stack, "selectiveReplacement", true);
+        }
     }
 
 
@@ -95,9 +98,19 @@ public class ExchangerHandler {
             return;
         }
 
+        // Store the target block type (the block being clicked on) for selective replacement
+        BlockState targetBlockState = world.getBlockState(pos);
+        Block targetBlock = targetBlockState.getBlock();
+
+        // If selective replacement is enabled and target is air, warn user and return
+        if (getSelectiveReplacement(stack) && targetBlock == Blocks.AIR) {
+            player.sendSystemMessage(Component.literal("§cCannot target air blocks for selective replacement!"));
+            return;
+        }
+
         // All ranges use area exchange now - range 0 = 1x1, range 1 = 3x3, etc.
         ExchangerMode mode = getCurrentMode(stack);
-        exchangeArea(stack, player, world, pos, side, state, block, currentRange, mode);
+        exchangeArea(stack, player, world, pos, side, state, block, currentRange, mode, targetBlock);
     }
 
     private static void exchangeSingleBlock(ItemStack stack, Player player, Level world, BlockPos pos, BlockState newState, Block newBlock) {
@@ -140,7 +153,7 @@ public class ExchangerHandler {
         }
     }
 
-    private static void exchangeArea(ItemStack stack, Player player, Level world, BlockPos centerPos, Direction face, BlockState newState, Block newBlock, int range, ExchangerMode mode) {
+    private static void exchangeArea(ItemStack stack, Player player, Level world, BlockPos centerPos, Direction face, BlockState newState, Block newBlock, int range, ExchangerMode mode, Block targetBlock) {
         int exchanged = 0;
         int failed = 0;
 
@@ -160,6 +173,13 @@ public class ExchangerHandler {
                 blockHardness < -0.1F ||
                 oldBlock == Blocks.AIR) {
                 continue;
+            }
+
+            // Check selective replacement - only replace blocks matching the target type
+            if (getSelectiveReplacement(stack)) {
+                if (oldBlock != targetBlock) {
+                    continue; // Skip this block as it doesn't match the target type
+                }
             }
 
             // Check fuzzy placement
@@ -458,5 +478,19 @@ public class ExchangerHandler {
     public static boolean getVoidItems(ItemStack stack) {
         ensureTagsExist(stack);
         return NBTHelper.getBoolean(stack, "voidItems");
+    }
+
+    // Selective Replacement methods
+    public static void toggleSelectiveReplacement(ItemStack stack, Player player) {
+        ensureTagsExist(stack);
+        boolean currentState = getSelectiveReplacement(stack);
+        boolean newState = !currentState;
+        NBTHelper.setBoolean(stack, "selectiveReplacement", newState);
+        player.sendSystemMessage(Component.literal("Selective Replacement: " + (newState ? "ON" : "OFF")));
+    }
+
+    public static boolean getSelectiveReplacement(ItemStack stack) {
+        ensureTagsExist(stack);
+        return NBTHelper.getBoolean(stack, "selectiveReplacement");
     }
 }

@@ -48,6 +48,8 @@ public class ClientKeyHandler {
             NetworkHandler.sendToServer(new PacketToggleVoidItems());
         } else if (Keys.TOGGLE_FORCE_DROP.consumeClick()) {
             NetworkHandler.sendToServer(new PacketToggleForceDropItems());
+        } else if (Keys.TOGGLE_SELECTIVE_REPLACEMENT.consumeClick()) {
+            NetworkHandler.sendToServer(new PacketToggleSelectiveReplacement());
         }
     }
 

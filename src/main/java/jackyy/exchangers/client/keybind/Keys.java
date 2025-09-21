@@ -63,6 +63,14 @@ public class Keys {
         CATEGORY
     );
 
+    public static final KeyMapping TOGGLE_SELECTIVE_REPLACEMENT = new KeyMapping(
+        "key.exchangers.toggle_selective_replacement",
+        ExchangersKeyConflictContext.EXCHANGER_CONFLICT_CONTEXT,
+        InputConstants.Type.KEYSYM,
+        InputConstants.KEY_R,
+        CATEGORY
+    );
+
     public static final KeyMapping OPEN_GUI = new KeyMapping(
         "key.exchangers.open_gui",
         ExchangersKeyConflictContext.EXCHANGER_CONFLICT_CONTEXT,
