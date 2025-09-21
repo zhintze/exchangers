@@ -1,0 +1,100 @@
+plugins {
+    id 'net.neoforged.moddev' version '2.0.28-beta'
+}
+
+version = project.mod_version
+group = project.mod_group_id
+
+repositories {
+    flatDir {
+        dirs "libs"
+    }
+    maven {
+        // JEI
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name = "curse.maven"
+        url = "https://cursemaven.com"
+    }
+}
+
+base {
+    archivesName = project.mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
+
+neoForge {
+    version = project.neo_version
+
+
+    runs {
+        client {
+            client()
+            gameDirectory = file('run-client')
+        }
+
+        server {
+            server()
+            gameDirectory = file('run-server')
+        }
+
+        data {
+            data()
+            gameDirectory = file('run-data')
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+    }
+
+    mods {
+        "${project.mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    implementation "net.neoforged:neoforge:${project.neo_version}"
+
+    // JADE
+    implementation "curse.maven:jade-324717:6011258"
+
+    // Immersive Engineering
+    implementation "curse.maven:ImmersiveEngineering-231951:5828000"
+
+    implementation "curse.maven:EnderIO-64578:6363527"
+
+
+    // Mekanism (local jars)
+    implementation "blank:Mekanism-1.21.1-10.7.14.homebaked"
+    implementation "blank:MekanismAdditions-1.21.1-10.7.14.homebaked"
+    implementation "blank:MekanismGenerators-1.21.1-10.7.14.homebaked"
+    implementation "blank:MekanismTools-1.21.1-10.7.14.homebaked"
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+        minecraft_version      : project.minecraft_version,
+        minecraft_version_range: project.minecraft_version_range,
+        neo_version            : project.neo_version,
+        neo_version_range      : project.neo_version_range,
+        loader_version_range   : project.loader_version_range,
+        mod_id                 : project.mod_id,
+        mod_name               : project.mod_name,
+        mod_license            : project.mod_license,
+        mod_version            : project.mod_version,
+        mod_authors            : project.mod_authors,
+        mod_description        : project.mod_description
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}

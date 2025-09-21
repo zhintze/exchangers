@@ -1,0 +1,64 @@
+{
+  "item_group.exchangers.main_creative_tab": "Exchangers",
+
+  "item.exchangers.wooden_exchanger": "Wooden Exchanger",
+  "item.exchangers.stone_exchanger": "Stone Exchanger",
+  "item.exchangers.golden_exchanger": "Golden Exchanger",
+  "item.exchangers.copper_exchanger": "Copper Exchanger",
+  "item.exchangers.iron_exchanger": "Iron Exchanger",
+  "item.exchangers.diamond_exchanger": "Diamond Exchanger",
+  "item.exchangers.emerald_exchanger": "Emerald Exchanger",
+  "item.exchangers.amethyst_exchanger": "Amethyst Exchanger",
+  "item.exchangers.obsidian_exchanger": "Obsidian Exchanger",
+  "item.exchangers.netherite_exchanger": "Netherite Exchanger",
+  "item.exchangers.end_exchanger": "End Exchanger",
+
+  "item.exchangers.bee_exchanger": "Bee Exchanger",
+  "item.exchangers.tuberous_exchanger": "Tuberous Exchanger",
+  "item.exchangers.creative_exchanger": "Creative Exchanger",
+
+  "item.exchangers.basic_exchanger": "Basic Exchanger",
+  "item.exchangers.advanced_exchanger": "Advanced Exchanger",
+  "item.exchangers.elite_exchanger": "Elite Exchanger",
+  "item.exchangers.ultimate_exchanger": "Ultimate Exchanger",
+
+  "item.exchangers.mekanism_exchanger_core_tier1": "Mekanism Exchanger Core Tier 1",
+  "item.exchangers.mekanism_exchanger_core_tier2": "Mekanism Exchanger Core Tier 2",
+  "item.exchangers.mekanism_exchanger_core_tier3": "Mekanism Exchanger Core Tier 3",
+
+  "item.exchangers.lv_exchanger": "LV Exchanger",
+  "item.exchangers.mv_exchanger": "MV Exchanger",
+  "item.exchangers.hv_exchanger": "HV Exchanger",
+
+  "item.exchangers.ie_exchanger_core_tier1": "IE Exchanger Core Tier 1",
+  "item.exchangers.ie_exchanger_core_tier2": "IE Exchanger Core Tier 2",
+  "item.exchangers.ie_exchanger_core_tier3": "IE Exchanger Core Tier 3",
+
+  "key.categories.exchangers": "Exchangers",
+  "key.exchangers.increase_range": "Increase Range",
+  "key.exchangers.decrease_range": "Decrease Range",
+  "key.exchangers.switch_mode": "Switch Mode",
+  "key.exchangers.toggle_fuzzy_placement": "Toggle Fuzzy Placement",
+  "key.exchangers.toggle_directional_placement": "Toggle Directional Placement",
+  "key.exchangers.toggle_void_items": "Toggle Void Items",
+  "key.exchangers.toggle_force_drop": "Toggle Force Drop",
+  "key.exchangers.open_gui": "Open Exchanger GUI",
+
+  "screen.exchangers.exchanger_gui.title": "Exchanger Configuration",
+
+  "exchangers.tooltip.decrease_range_button": "Decrease Range",
+  "exchangers.tooltip.increase_range_button": "Increase Range",
+  "exchangers.tooltip.mode_switch_button": "Switch Mode",
+  "exchangers.tooltip.current_mode": "Current Mode: %s",
+  "exchangers.tooltip.force_drop_items_button_name": "Force Drop Items",
+  "exchangers.tooltip.force_drop_items_button_desc": "Force dropped items instead of adding to inventory",
+  "exchangers.tooltip.directional_placement_button_name": "Directional Placement",
+  "exchangers.tooltip.directional_placement_button_desc": "Place blocks facing the right direction",
+  "exchangers.tooltip.fuzzy_placement_button_name": "Fuzzy Placement",
+  "exchangers.tooltip.fuzzy_placement_button_desc": "Randomly place blocks with a chance",
+  "exchangers.tooltip.void_items_button_name": "Void Items",
+  "exchangers.tooltip.void_items_button_desc": "Void exchanged items instead of dropping them",
+  "exchangers.tooltip.fuzzy_placement_chance_box_name": "Fuzzy Placement Chance",
+  "exchangers.tooltip.fuzzy_placement_chance_box_desc": "Set the percentage chance for fuzzy placement",
+  "exchangers.tooltip.state": "State: %s"
+}
